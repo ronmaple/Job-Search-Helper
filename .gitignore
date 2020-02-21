@@ -1,0 +1,9 @@
+### keys
+server/config/*
+
+### dot files
+.env
+
+### auto-generated
+node_modules
+yarn.lock
