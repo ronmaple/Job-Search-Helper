@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "react-router-dom": "^5.1.2"
   },
   "scripts": {
     "dev": "concurrently --kill-others \"cd client && yarn start\" \"cd server && nodemon index.js\""

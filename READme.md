@@ -9,4 +9,3 @@
 
 - Backend: Node, Typescript, Express, (Firebase to integrate later)
 - Frontend: React, Typescript
-
