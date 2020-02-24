@@ -1,13 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component, Children } from 'react'
 import styled from 'styled-components'
 
-
-export default class Layout extends Component {
-    render() {
-        return (
-            <div>
-
-            </div>
-        )
+const Container = styled.main`
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    /* grid-template-areas: "header header header"
+                        "body body body"
+                        "footer footer footer"; */
+    width: 100%;
+    height: 100%;
+    * {
+        font-family: ${props => props.theme.fonts[1]};
     }
+`
+
+const Layout = ({ children }) => {
+    return (
+        <Container>
+            {children}
+        </Container>
+    )
 }
+
+export default Layout

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 
+import Main from '../components/Main'
+
 class Home extends Component {
     render() {
         return (
-            <div>
-                Home
-            </div>
+            <>
+                <Main />
+            </>
         )
     }
 }

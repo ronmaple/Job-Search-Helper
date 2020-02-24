@@ -14,25 +14,31 @@ import Header from './components/Header'
 import './App.css';
 
 import styled from 'styled-components'
+import Layout from './components/Layout'
+import Theme from './components/Themes'
 
 // TODO: change this into .tsx
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Header></Header>
+    <Theme>
+      <Layout>
+        <Router>
+          <>
+            <Header />
 
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+            <Switch>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </>
+        </Router>
+      </Layout>
+    </Theme>
   );
 }
 
