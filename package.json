@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "react-router-dom": "^5.1.2"
   },
@@ -7,6 +8,7 @@
     "dev": "concurrently --kill-others \"cd client && yarn start\" \"cd server && nodemon index.js\""
   },
   "devDependencies": {
+    "@types/styled-components": "^5.0.1",
     "concurrently": "^5.1.0"
   }
 }
