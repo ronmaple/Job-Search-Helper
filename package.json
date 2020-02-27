@@ -8,6 +8,7 @@
     "dev": "concurrently --kill-others \"cd client && yarn start\" \"cd server && nodemon index.js\""
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.1.3",
     "@types/styled-components": "^5.0.1",
     "concurrently": "^5.1.0"
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.button`
+const StyledButton = styled.button`
     float: left;
     width: 10%;
     padding: 0.8em;
@@ -17,12 +17,18 @@ const Wrapper = styled.button`
         transform: scale(1.05);
     }
 `
+interface IButton {
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+}
 
-const Button: React.FC = ({ children }) => {
+const Button: React.FC<IButton> = ({ children, onClick }) => {
     return (
-        <Wrapper type="submit">
+        <StyledButton
+            type="submit"
+            onClick={onClick}
+        >
             {children}
-        </Wrapper>
+        </StyledButton>
     )
 }
 

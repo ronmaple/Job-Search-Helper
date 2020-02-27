@@ -10,7 +10,6 @@ const Wrapper = styled.form`
     }
 `
 
-
 const Form: React.FC = ({ children }) => {
     return (
         <Wrapper>

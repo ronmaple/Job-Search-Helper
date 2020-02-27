@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import search from '../assets/images/search.svg'
-import Button from '../components/reusables/Button'
-import Form from '../components/reusables/Form'
-import Input from '../components/reusables/Input'
+import Button from './reusables/Button'
+import Form from './reusables/Form'
+import Input from './reusables/Input'
 import axios from 'axios';
 
 const Wrapper = styled.main`
@@ -37,7 +37,15 @@ const Content = styled.div`
         font-weight: 500;
     }
 `
-const Main = () => {
+
+
+const Main: React.FC = () => {
+
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+        e.preventDefault();
+        console.log('handle submit');
+    }
+
     return (
         <Wrapper>
             <Content>
@@ -45,8 +53,10 @@ const Main = () => {
                 <h2>Your all in one job search helper</h2>
 
                 <Form>
-                    <Input type="text" placeholder="Search..." method="get" />
-                    <Button>
+                    <Input type="text" placeholder={"Search..."} />
+                    <Button
+                        onClick={handleSubmit}
+                    >
                         Search
                     </Button>
                 </Form>

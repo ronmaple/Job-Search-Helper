@@ -2,11 +2,9 @@ const app = require('express')();
 const { readData } = require('./actions/call');
 
 
-app.get('/', (req, res) => {
-    const data = readData();
-
-    console.log(data);
-    res.send('/');
+app.get('/jobs', async (req, res) => {
+    const data = await readData();
+    res.send(data.data.results);
 })
 
 let port = process.env.PORT || 3001;

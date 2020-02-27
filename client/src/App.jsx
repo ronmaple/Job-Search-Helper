@@ -16,6 +16,7 @@ import './App.css';
 import styled from 'styled-components'
 import Layout from './components/Layout'
 import Theme from './components/Themes'
+import Footer from './components/Footer'
 
 // TODO: change this into .tsx
 
@@ -37,6 +38,8 @@ function App() {
             </Switch>
           </>
         </Router>
+
+        <Footer />
       </Layout>
     </Theme>
   );
