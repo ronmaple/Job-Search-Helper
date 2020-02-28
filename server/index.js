@@ -1,6 +1,11 @@
 const app = require('express')();
+const cors = require('cors');
+
 const { readData } = require('./actions/call');
 
+app.use(cors());
+
+// TO DO: whitelist origins: https://expressjs.com/en/resources/middleware/cors.html
 
 app.get('/jobs', async (req, res) => {
     const data = await readData();

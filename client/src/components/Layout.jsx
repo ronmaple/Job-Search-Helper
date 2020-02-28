@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Container = styled.main`
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: repeat(4, auto);
     /* grid-template-areas: "header header header"
                         "body body body"
                         "footer footer footer"; */

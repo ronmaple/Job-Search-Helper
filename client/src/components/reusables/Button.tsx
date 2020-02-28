@@ -14,7 +14,7 @@ const StyledButton = styled.button`
     outline:none;
 
     &:active{
-        transform: scale(1.05);
+        transform: scale(0.98);
     }
 `
 interface IButton {

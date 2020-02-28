@@ -24,6 +24,7 @@ function App() {
   return (
     <Theme>
       <Layout>
+
         <Router>
           <>
             <Header />
@@ -40,6 +41,7 @@ function App() {
         </Router>
 
         <Footer />
+
       </Layout>
     </Theme>
   );
