@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { AppContextProvider } from '../../context/AppContextProvider'
 
 const Container = styled.div`
     width: 500px;
@@ -20,16 +21,17 @@ const Container = styled.div`
 `
 
 const Head = styled.div`
-    line-height: 2em;
+    line-height: 1.35em;
 
     h2 {
-        font-size: 1.5em;
+        font-size: 1.2em;
         font-weight: 600;
     }
 
     h3 { 
-        font-size: 1.25em;
+        font-size: 1.0em;
         font-weight: 300;
+        color: ${props => props.theme.colors.gray}
     }
 
 `
@@ -49,26 +51,40 @@ const Foot = styled.div`
         color: hsl(0, 0%, 20%);
     }
 `
-const Listing: React.FC = () => {
+
+interface Props {
+    title: string,
+    company: string,
+    desc: string,
+    key: number,
+    created: Date,
+}
+
+
+const Listing: React.FC<Props> = ({ title, company, desc, key, created }) => {
+
+    let description: string = desc.length > 197 ? desc.slice(0, 197) + '...' : desc + '...';
+
     return (
-        <Container>
+
+        <Container key={key} onClick={() => {
+            console.log('Listing Container click event')
+        }}>
             <Head>
-                <h2>Job Title</h2>
-                <h3>Company</h3>
+                <h2>{title}</h2>
+                <h3>{company}</h3>
             </Head>
 
 
 
             <Summary>
                 <p>
-                    I'm baby kinfolk woke crucifix actually. Prism neutra heirloom poke direct trade
-                    trust fund meh pitchfork. Pitchfork pickled post-ironic pork belly. Thundercats
-                    activated charcoal flannel twee af.
+                    {description}
                 </p>
             </Summary>
 
             <Foot>
-                <span>14 days ago</span>
+                <span>{created}</span>
             </Foot>
         </Container>
     )

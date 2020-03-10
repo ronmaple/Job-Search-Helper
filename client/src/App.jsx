@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,6 +7,9 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom"
+
+import { AppContextProvider, AppContext } from './context/AppContextProvider'
+
 import About from './pages/About'
 import Home from './pages/Home'
 import Header from './components/Header'
@@ -17,33 +20,48 @@ import styled from 'styled-components'
 import Layout from './components/Layout'
 import Theme from './components/Themes'
 import Footer from './components/Footer'
+import Posting from './pages/Posting'
 
 // TODO: change this into .tsx
 
-function App() {
+const App = () => {
+
+
+
+
   return (
-    <Theme>
-      <Layout>
+    <AppContextProvider>
+      <Theme>
 
-        <Router>
-          <>
-            <Header />
+        <Layout>
 
-            <Switch>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </>
-        </Router>
+          <Router>
+            <>
+              <Header />
 
-        <Footer />
+              <Switch>
+                <Route exact path="/about">
+                  <About />
+                </Route>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route exact path="/posting">
+                  <Posting />
+                </Route>
 
-      </Layout>
-    </Theme>
+              </Switch>
+            </>
+          </Router>
+
+          <Footer />
+
+        </Layout>
+      </Theme>
+
+
+    </AppContextProvider>
+
   );
 }
 

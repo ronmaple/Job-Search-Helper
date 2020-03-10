@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+
 import styled from 'styled-components'
-import search from '../assets/images/search.svg'
+
 import Button from './reusables/Button'
 import Form from './reusables/Form'
 import Input from './reusables/Input'
 import axios from 'axios';
 import Listing from '../components/reusables/Listing'
+
+import { AppContext } from '../context/AppContextProvider'
 
 const Wrapper = styled.main`
     /* grid-area: ${props => props.theme.area.main}; */
@@ -51,16 +54,28 @@ const QueryResult = styled.div`
     justify-content: flex-start;
     flex-wrap: wrap;
     margin: auto;
-    
+
     > div {
         margin: 1em 3em;
     }
 `
 
+interface apiData {
+    title: string,
+    description: string,
+    company: string,
+    created: Date,
+    id: number,
+}
 
 const Main: React.FC = () => {
-    const [data, setData] = useState([]);
+
+    const [data, setData] = useState<Array<apiData>>([]);
     const [loaded, setLoad] = useState(false);
+
+    const [state, dispatch] = useContext(AppContext)
+    // const [context, setContext] = useContext(AppContext)
+
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
         e.preventDefault();
 
@@ -69,6 +84,9 @@ const Main: React.FC = () => {
             console.log(res);
             await setData(res.data);
             setLoad(true);
+
+            await dispatch({ type: "SET_DATA", payload: res.data });
+            console.log('state', await state);
         }
 
         call();
@@ -94,9 +112,19 @@ const Main: React.FC = () => {
             </Wrapper>
 
             <QueryResult>
-                <Listing />
-                <Listing />
-                <Listing />
+                {loaded &&
+                    data.map(({ title, company, created, id, description }) => {
+                        return (
+                            <Listing
+                                title={title}
+                                company={company}
+                                created={created}
+                                key={id}
+                                desc={description}
+                            />
+                        )
+                    })
+                }
             </QueryResult>
         </>
     )
