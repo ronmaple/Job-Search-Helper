@@ -73,7 +73,7 @@ const Main: React.FC = () => {
     const [data, setData] = useState<Array<apiData>>([]);
     const [loaded, setLoad] = useState(false);
 
-    const [state, dispatch] = useContext(AppContext)
+    // const [state, dispatch] = useContext(AppContext)
     // const [context, setContext] = useContext(AppContext)
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
@@ -85,8 +85,8 @@ const Main: React.FC = () => {
             await setData(res.data);
             setLoad(true);
 
-            await dispatch({ type: "SET_DATA", payload: res.data });
-            console.log('state', await state);
+            // await dispatch({ type: "SET_DATA", payload: res.data });
+            // console.log('state', await state);
         }
 
         call();

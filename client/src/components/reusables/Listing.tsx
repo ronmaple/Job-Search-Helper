@@ -1,6 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { AppContextProvider } from '../../context/AppContextProvider'
+
+import { AppContext } from '../../context/AppContextProvider';
+import { Route, Redirect } from 'react-router-dom';
 
 const Container = styled.div`
     width: 500px;
@@ -63,12 +65,26 @@ interface Props {
 
 const Listing: React.FC<Props> = ({ title, company, desc, key, created }) => {
 
+    const [state, dispatch] = useContext(AppContext);
+    const [selected, setSelected] = useState(false);
+
     let description: string = desc.length > 197 ? desc.slice(0, 197) + '...' : desc + '...';
 
-    return (
-
+    const Main = () => (
         <Container key={key} onClick={() => {
-            console.log('Listing Container click event')
+            dispatch({
+                type: "SET_DATA", payload: {
+                    title,
+                    company,
+                    desc,
+                    key,
+                    created
+                }
+            })
+
+            console.log('Container click')
+
+            setSelected(true);
         }}>
             <Head>
                 <h2>{title}</h2>
@@ -87,6 +103,12 @@ const Listing: React.FC<Props> = ({ title, company, desc, key, created }) => {
                 <span>{created}</span>
             </Foot>
         </Container>
+    )
+    return (
+
+        <Route exact path="/">
+            { selected ? <Redirect to='/posting'/> : <Main />}
+        </Route>
     )
 }
 

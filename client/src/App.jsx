@@ -18,6 +18,7 @@ import './App.css';
 
 import styled from 'styled-components'
 import Layout from './components/Layout'
+import ContentLayout from './components/ContentLayout'
 import Theme from './components/Themes'
 import Footer from './components/Footer'
 import Posting from './pages/Posting'
@@ -40,17 +41,25 @@ const App = () => {
               <Header />
 
               <Switch>
-                <Route exact path="/about">
-                  <About />
-                </Route>
+
                 <Route exact path="/">
                   <Home />
                 </Route>
-                <Route exact path="/posting">
-                  <Posting />
-                </Route>
+
+                <ContentLayout>
+                  <Route exact path="/posting">
+                    <Posting />
+                  </Route>
+
+                  <Route exact path="/about">
+                    <About />
+                  </Route>
+
+                </ContentLayout>
 
               </Switch>
+
+
             </>
           </Router>
 

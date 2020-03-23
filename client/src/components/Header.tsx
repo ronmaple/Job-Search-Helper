@@ -39,6 +39,8 @@ const Wrapper = styled.header`
             }
         }
     }
+
+    
 `
 
 const Nav = styled.nav`
@@ -51,6 +53,26 @@ const Logo = styled.div`
     img {
         height: 75px;
         width: auto;
+    }
+
+    @-moz-keyframes spin {
+        from { -moz-transform: rotate(0deg); }
+        to { -moz-transform: rotate(360deg); }
+    }
+    @-webkit-keyframes spin {
+        from { -webkit-transform: rotate(0deg); }
+        to { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes spin {
+        from {transform:rotate(0deg);}
+        to {transform:rotate(360deg);}
+    }
+
+    img:hover {
+        -webkit-animation-name: spin;
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: linear;
     }
 `
 
